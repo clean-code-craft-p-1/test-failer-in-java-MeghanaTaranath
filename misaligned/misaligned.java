@@ -12,17 +12,17 @@ public class misaligned {
     public static List<String> generateColorMap() {
         String[] majorColors = {"White", "Red", "Black", "Yellow", "Violet"};
         String[] minorColors = {"Blue", "Orange", "Green", "Brown", "Slate"};
-
-        List<String> result = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                // BUG: should be minorColors[j], but we keep minorColors[i] to expose bug
-                String line = getColorMapEntry(i * 5 + j, majorColors[i], minorColors[i]);
-                result.add(line);
-            }
+  List<String> colorMapEntries = new ArrayList<>();
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            // BUG: should be minorColors[j]
+            String line = getColorMapEntry(i * 5 + j, majorColors[i], minorColors[i]);
+            colorMapEntries.add(line);
         }
-        return result;
     }
+    return colorMapEntries;
+    }
+    
 
     public static void main(String[] args) {
         List<String> map = generateColorMap();
@@ -31,8 +31,13 @@ public class misaligned {
 
         // Failing test that exposes the bug
         // Index 1 should be "White | Orange", but due to bug it will still be "White | Blue"
-        System.out.println("Testing row 1: " + map.get(1));  // Visual debug
-        assert(map.get(1).contains("Orange")); // ❌ This assertion will fail
+String expected = getColorMapEntry(1, "White", "Orange");
+String actual = map.get(1);
+
+// Stronger, clearer assertion with detailed error message
+assert actual.equals(expected) : 
+    "Expected row 1 to be: '" + expected + "', but got: '" + actual + "'";
+	
 
         System.out.println("All is well (maybe!)");
     }
