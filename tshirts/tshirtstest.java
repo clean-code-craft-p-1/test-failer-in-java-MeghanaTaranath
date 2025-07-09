@@ -5,6 +5,6 @@ public class tshirtstest {
         assert tshirts.size(43).equals("L") : "Test failed: Expected L";
         assert tshirts.size(38).equals("M") : "Test failed: Expected M";
 
-        System.out.println("All tests passed.");
+        System.out.println("All tests passed");
     }
 }
