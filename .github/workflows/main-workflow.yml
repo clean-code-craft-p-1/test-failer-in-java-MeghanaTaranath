@@ -18,17 +18,17 @@ jobs:
     - name: tshirts fail
       if: always()
       run: |
-        cd tshirtstest
+        cd tshirts
         java -ea tshirtstest.java
 
     - name: misaligned fail
       if: always()
       run: |
-        cd ColorMapGeneratorTest
+        cd misaligned
         java -ea ColorMapGeneratorTest.java
 
     - name: weather report fail
       if: always()
       run: |
-        cd WeatherReportTest
+        cd weatherreport
         java -ea WeatherReportTest.java
