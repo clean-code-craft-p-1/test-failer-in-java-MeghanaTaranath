@@ -8,8 +8,4 @@ public class tshirts {
             return "L";
         }
     }
-
-    public static void main(String[] args) {
-        System.out.println("Use TShirtsTest for testing.");
-    }
 }
