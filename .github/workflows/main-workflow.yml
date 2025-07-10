@@ -19,16 +19,16 @@ jobs:
       if: always()
       run: |
         cd tshirts
-        java -ea tshirts.java
+        java -ea tshirtstest.java
 
     - name: misaligned fail
       if: always()
       run: |
         cd misaligned
-        java -ea misaligned.java
+        java -ea ColorMapGeneratorTest.java
 
     - name: weather report fail
       if: always()
       run: |
         cd weatherreport
-        java -ea weatherreport.java
+        java -ea WeatherReportTest.java
