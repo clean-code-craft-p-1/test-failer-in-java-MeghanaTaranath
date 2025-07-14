@@ -16,11 +16,11 @@ public class tshirtstest {
 
         System.out.println("All tests executed (but should fail).");
     }
-
-    private static void test(int input, String expected) {
-        String actual = tshirts.getSize(input);
-        assert expected.equals(actual) : "FAILED: Input: " + input + 
-               " | Expected: " + expected + 
-               " | Got: " + actual;
+private static void runTest(int input, String expected) {
+        String actual = tshirts.size(input);
+        assert expected.equals(actual) : 
+            "FAILED: Input = " + input + 
+            " | Expected = " + expected + 
+            " | Got = " + actual;
     }
 }
