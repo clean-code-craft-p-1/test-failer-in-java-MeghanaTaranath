@@ -1,9 +1,26 @@
 public class tshirtstest {
     public static void main(String[] args) {
-        assert "S".equals(tshirts.size(37));
-        assert "M".equals(tshirts.size(38)); // edge case test
-        assert "M".equals(tshirts.size(40));
-        assert "L".equals(tshirts.size(43));
-        System.out.println("All tests passed (probably!)");
+        test(36, "S");
+        test(37, "S");
+
+        test(38, "M"); // ❌ Bug: will return "L"
+        test(39, "M");
+        test(40, "M");
+
+        test(41, "L"); // Edge boundary
+        test(42, "L");
+        test(100, "L");
+
+        test(0, "S");    // Edge case: very low input
+        test(-5, "S");   // Negative size (nonsensical, but we test behavior)
+
+        System.out.println("All tests executed (but should fail).");
+    }
+
+    private static void test(int input, String expected) {
+        String actual = tshirts.getSize(input);
+        assert expected.equals(actual) : "FAILED: Input: " + input + 
+               " | Expected: " + expected + 
+               " | Got: " + actual;
     }
 }
